@@ -14,6 +14,14 @@
         </div>
       </section>
       <CoursesSection/>
+
+      <OfferSection/>
+
+      <div class="combined-reviews">
+        <Reviews />
+        <ReviewList />
+      </div>
+
     </main>
     <footer>
       <button @click="toggleDarkMode">
@@ -64,6 +72,22 @@ function changeLocale(event) {
 </script>
 
 <style>
+
+.combined-reviews {
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* Расстояние между блоками */
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 600px) {
+  .combined-reviews {
+    display: flex;
+    flex-direction: column;
+    padding: 10px; /* Уменьшение отступов для маленьких экранов */
+  }
+}
+
 /* Обычные стили для светлого режима */
 .header {
   text-align: center;
