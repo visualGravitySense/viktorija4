@@ -1,5 +1,5 @@
 <template>
-  <div :class="darkMode ? 'dark' : ''">
+  <div>
     <header class="header">
       <h1>{{ $t('welcome') }}</h1>
       <nav>
@@ -13,6 +13,7 @@
           <h2>{{ $t('welcome') }}</h2>
         </div>
       </section>
+      <CoursesSection/>
     </main>
     <footer>
       <button @click="toggleDarkMode">
@@ -30,24 +31,40 @@
 import { useI18n } from 'vue-i18n';
 import { ref } from 'vue';
 
+import CoursesSection from '~/components/CoursesSection.vue';
+
 const { locale } = useI18n();
 const darkMode = ref(false);
 
+
+// Функция для переключения темного режима
 function toggleDarkMode() {
   darkMode.value = !darkMode.value;
+  if (darkMode.value) {
+    document.documentElement.classList.add('dark'); // Добавляем класс dark
+    localStorage.setItem('darkMode', 'true');
+  } else {
+    document.documentElement.classList.remove('dark'); // Убираем класс dark
+    localStorage.setItem('darkMode', 'false');
+  }
 }
+
+// При монтировании компонента проверяем, был ли активирован темный режим ранее
+onMounted(() => {
+  if (localStorage.getItem('darkMode') === 'true') {
+    darkMode.value = true;
+    document.documentElement.classList.add('dark');
+  }
+});
 
 function changeLocale(event) {
   locale.value = event.target.value;
 }
+
 </script>
 
-<style scoped>
-body.dark {
-  background-color: #121212;
-  color: white;
-}
-
+<style>
+/* Обычные стили для светлого режима */
 .header {
   text-align: center;
   padding: 2rem;
@@ -91,7 +108,41 @@ footer {
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: var(--color-secondary);
+}
+
+/* Стили темного режима */
+/* Глобальные стили для всего приложения */
+html.dark {
+  background-color: #121212;
+  color: white;
+}
+
+html.dark .header {
+  background-color: #333;
+}
+
+html.dark .parallax {
+  background-image: url('/images/dark-driving-school.jpg'); /* Темная версия изображения */
+}
+
+html.dark .button {
+  background-color: #0056b3;
+  color: white;
+}
+
+html.dark .button:hover {
+  background-color: #003f8f;
+}
+
+/* Темный режим для блока CoursesSection */
+html.dark .courses-section {
+  background-color: #2c2c2c;
+  color: white;
+}
+
+html.dark .course {
+  background-color: #3a3a3a;
+  color: white;
 }
 </style>
 
