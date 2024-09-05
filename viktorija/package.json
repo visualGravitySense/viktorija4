@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@storefront-ui/vue": "^2.6.4",
+    "date-fns": "^3.6.0",
     "nuxt": "^3.13.0",
     "vue": "latest",
     "vue-i18n": "^10.0.0-beta.6"
