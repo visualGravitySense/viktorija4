@@ -157,6 +157,166 @@ Storefront 2 — это компонентная библиотека для eCo
 
 Следуйте инструкциям для деплоя на Vercel.
 
+Для создания главной страницы на Nuxt 3 с учетом трендов дизайна, таких как темный режим, минимализм, параллакс-скроллинг и i18n, вот пример кода. Я покажу вам, как можно создать простую, но функциональную главную страницу с учетом упомянутых требований.
+
+### 1. Установите необходимые зависимости
+
+Для начала установите `vue-i18n` для мультиязычной поддержки и другие необходимые пакеты:
+
+```bash
+npm install vue-i18n@next
+```
+
+### 2. Создайте i18n конфигурацию
+
+В папке `plugins` создайте файл `i18n.js`:
+
+```javascript
+// plugins/i18n.js
+
+import { createI18n } from 'vue-i18n';
+
+export default defineNuxtPlugin((nuxtApp) => {
+  const i18n = createI18n({
+    locale: 'en', // Язык по умолчанию
+    fallbackLocale: 'en',
+    messages: {
+      en: {
+        welcome: 'Welcome to Victoria Driving School',
+        register: 'Register Now',
+        contact: 'Contact Us',
+      },
+      ru: {
+        welcome: 'Добро пожаловать в автошколу Виктория',
+        register: 'Записаться',
+        contact: 'Связаться с нами',
+      },
+    },
+  });
+
+  nuxtApp.vueApp.use(i18n);
+});
+```
+
+### 3. Главная страница (Home Page)
+
+Создайте или обновите файл `pages/index.vue`:
+
+```vue
+<template>
+  <div :class="darkMode ? 'dark' : ''">
+    <header class="header">
+      <h1>{{ $t('welcome') }}</h1>
+      <nav>
+        <nuxt-link :to="'/register'" class="button">{{ $t('register') }}</nuxt-link>
+        <nuxt-link :to="'/contact'" class="button">{{ $t('contact') }}</nuxt-link>
+      </nav>
+    </header>
+    <main>
+      <section class="parallax">
+        <div class="content">
+          <h2>{{ $t('welcome') }}</h2>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <button @click="toggleDarkMode">
+        {{ darkMode ? 'Light Mode' : 'Dark Mode' }}
+      </button>
+      <select v-model="locale" @change="changeLocale">
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+      </select>
+    </footer>
+  </div>
+</template>
+
+<script setup>
+import { useI18n } from 'vue-i18n';
+import { ref } from 'vue';
+
+const { locale } = useI18n();
+const darkMode = ref(false);
+
+function toggleDarkMode() {
+  darkMode.value = !darkMode.value;
+}
+
+function changeLocale(event) {
+  locale.value = event.target.value;
+}
+</script>
+
+<style scoped>
+body.dark {
+  background-color: #121212;
+  color: white;
+}
+
+.header {
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--color-primary);
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.parallax {
+  background-image: url('/images/driving-school.jpg');
+  height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parallax .content {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: var(--color-secondary);
+}
+</style>
+```
+
+### 4. Дополнительно
+
+- **Темный режим**: Реализован с использованием простого переключателя. `darkMode` контролирует класс `dark` для тела страницы.
+- **Параллакс-скроллинг**: Секция `parallax` использует фоновое изображение с фиксированным прикреплением.
+- **Мультиязычность**: С помощью `vue-i18n` можно переключать языки через выпадающий список.
+
+### 5. Запуск проекта
+
+Убедитесь, что у вас настроены все необходимые компоненты и зависимости, и запустите проект:
+
+```bash
+npm run dev
+```
+
+Это пример простой главной страницы, соответствующей основным требованиям. Вы можете расширить ее, добавив дополнительные элементы и функциональности по мере необходимости.
+
 ### Заключение
 
 Этот план поможет вам быстро создать и запустить сайт, похожий на Udemy, с использованием современных инструментов и технологий. Конечно, для полноценной функциональности потребуется больше времени и усилий, но это хороший старт для MVP (минимально жизнеспособного продукта).
