@@ -1,14 +1,18 @@
 <template>
   <div>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
     <header class="header">
       <h1>{{ $t('welcome') }}</h1>
       <nav>
         <nuxt-link :to="'/register'" class="button">{{ $t('register') }}</nuxt-link>
         <nuxt-link :to="'/contact'" class="button">{{ $t('contact') }}</nuxt-link>
+        <SiteMapAccordion />
       </nav>
+      
     </header>
     <main>
       <section class="parallax">
+        
         <div class="content">
           <h2>{{ $t('welcome') }}</h2>
         </div>
@@ -22,9 +26,13 @@
         <ReviewList />
       </div>
 
+      <ContactForm />
+
     </main>
     <footer>
+      
       <button @click="toggleDarkMode">
+        <i :class="darkMode ? 'fas fa-moon' : 'fas fa-sun'"></i>
         {{ darkMode ? 'Light Mode' : 'Dark Mode' }}
       </button>
       <select v-model="locale" @change="changeLocale">
@@ -40,6 +48,7 @@ import { useI18n } from 'vue-i18n';
 import { ref } from 'vue';
 
 import CoursesSection from '~/components/CoursesSection.vue';
+import SiteMapAccordion from '@/components/SiteMapAccordion.vue'
 
 const { locale } = useI18n();
 const darkMode = ref(false);
@@ -72,6 +81,66 @@ function changeLocale(event) {
 </script>
 
 <style>
+
+/* button */
+button {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Цветовая смена на hover */
+button:hover {
+  background-color: #fff;
+  color: #007bff;
+  border-color: #007bff;
+}
+
+/* Темный режим */
+button.dark-mode {
+  background-color: #343a40;
+  color: white;
+  border-color: #343a40;
+}
+
+/* Анимация круга при клике */
+button:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: width 0.6s ease, height 0.6s ease, top 0.6s ease, left 0.6s ease;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  opacity: 0;
+}
+
+button:active:before {
+  width: 0;
+  height: 0;
+  opacity: 1;
+  transition: none;
+}
+
+/* Уровень текста поверх анимации */
+button span {
+  position: relative;
+  z-index: 1;
+}
+
 
 .combined-reviews {
   display: flex;
