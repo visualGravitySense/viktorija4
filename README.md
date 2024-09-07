@@ -1,25 +1,116 @@
+### Auto School "Victorija" Website Objectives
 
-Для автошколы "Виктория" сайт должен выполнять несколько ключевых целей:
+The website for "Victorija" Auto School must fulfill several key objectives:
 
-1. Привлечение новых учеников
-Описание услуг и курсов: Подробная информация о предлагаемых курсах вождения, включая категории, стоимость, продолжительность и график занятий.
-Отзывы: Раздел с отзывами бывших учеников, чтобы повысить доверие потенциальных клиентов.
-Акции и скидки: Информация о текущих акциях и специальных предложениях, чтобы стимулировать записи на курсы.
-2. Информирование о курсах
-Календарь занятий: Интерактивный календарь с расписанием занятий и свободными местами, чтобы пользователи могли выбрать удобное для них время.
-Учебные материалы: Раздел с учебными материалами (например, статьи, видеоролики), который поможет ученикам лучше подготовиться к экзаменам.
-Информация о преподавателях: Представление команды инструкторов, их квалификаций и опыта.
-3. Удобное взаимодействие с потенциальными клиентами
-Форма обратной связи: Простейшие формы для записи на курсы, запроса информации или обратной связи.
-Чат-бот и онлайн-консультант: Интеграция чат-бота или онлайн-консультанта для быстрого ответа на вопросы посетителей.
-Контактная информация и карта: Легкодоступная информация о местоположении автошколы, контактных номерах и рабочем времени, а также интерактивная карта для удобного поиска.
-4. Улучшение пользовательского опыта
-Адаптивный дизайн: Оптимизация сайта для различных устройств (мобильных, планшетов, ПК) для комфортного взаимодействия.
-Простота навигации: Логичная и интуитивно понятная структура сайта, позволяющая быстро находить необходимую информацию.
-Быстрая загрузка страниц: Оптимизация производительности для быстрой загрузки страниц сайта.
-5. Повышение узнаваемости бренда
-Визуальная идентификация: Уникальный дизайн, соответствующий бренду "Виктория", включая использование фирменных цветов, логотипа и графики.
-Блог и новости: Раздел с актуальными новостями, статьями и советами по вождению для привлечения постоянного трафика на сайт.
-Определив эти цели, вы сможете сосредоточить усилия на создании сайта, который эффективно привлекает и удерживает новых клиентов, предоставляя полезную информацию и улучшая взаимодействие с пользователями.
+### 1. **Attracting New Students**
+   - **Service and Course Descriptions:** Detailed information on driving courses offered, including categories, pricing, duration, and class schedules.
+	   - Example of courses, classes, dates.
+   - **Testimonials:** A section showcasing reviews from former students to build trust with potential clients.
+	   - Example of reviews.
+   - **Campaigns and Discounts:** Information about current promotions and special offers to encourage course enrollment.
+	   - Example of campaigns.
 
+### 2. **Course Information**
+   - **Class Calendar:** An interactive schedule displaying available classes and open spots, allowing users to choose a suitable time.
+   - **Study Materials:** A section with educational resources (e.g., articles, videos) to help students prepare better for exams.
+   - **Instructor Information:** Presentation of the instructor team, detailing their qualifications and experience.
+
+### 3. **Convenient Interaction with Potential Clients**
+   - **Contact Form:** Simple forms for course enrollment, information requests, or feedback submission.
+   - **Chatbot and Online Consultant:** Integration of a chatbot or online consultant for quick responses to visitor inquiries.
+   - **Contact Information and Map:** Easily accessible information about the auto school’s location, contact numbers, and working hours, along with an interactive map for easy navigation.
+
+### 4. **Improving User Experience**
+   - **Responsive Design:** Optimizing the website for different devices (mobile, tablet, PC) for a seamless experience.
+	   ![[Adaptive design Drawing 2024-09-07 02.34.26.excalidraw|1500]]
+   - **Simple Navigation:** A logical and intuitive site structure that helps users find the necessary information quickly.
+	   ![[Site menu Drawing 2024-09-07 15.10.22.excalidraw]]
+   - **Fast Page Loading:** Performance optimization to ensure quick page loading.
+
+### 5. **Enhancing Brand Recognition**
+   - **Visual Identity:** A unique design that aligns with the "Victoria" brand, including the use of brand colors, logos, and graphics.
+   - **Blog and News:** A section with relevant news, articles, and driving tips to attract regular traffic to the site.
+	   ![[Group 479.png]]
+
+---
+
+## Features and Structure
+
+The website will include several essential features and sections, such as:
+
+1. **Course Offerings:** A dynamic section listing the available courses (e.g., Category A, A1, B) with detailed descriptions, schedules, and prices.
+2. **Interactive Calendar:** Users can view and choose from available time slots for their driving lessons.
+3. **Instructor Profiles:** A section presenting each instructor’s photo, name, qualifications, and years of experience.
+4. **Contact Form and Map:** A contact form to submit questions or register for courses, alongside an interactive map showing the auto school’s location.
+5. **Responsive Design:** The website will be fully responsive, ensuring it functions well on both mobile devices and desktop computers.
+
+---
+
+## User Experience (UX/UI)
+
+The design will focus on:
+- **Clear call-to-action buttons** (e.g., "Register," "Contact Us").
+- **Engaging visual design** that reflects the brand’s identity and purpose.
+- **Accessible information** (e.g., phone numbers, locations, working hours).
+- **Fast load times** and smooth transitions between pages.
+  
+---
+ 
+## Technologies Used
+
+- **Frontend:** Nuxt.js, Vue.js
+- **Internationalization:** i18n for multilingual support (e.g., English and Russian).
+- **Styling:** SCSS for adaptive design.
+- **Date Management:** `date-fns` for handling calendar functionality.
+- **Responsive Layouts:** Mobile-first approach with grid and flexbox systems.
+
+---
+
+## Project Structure and Implementation
+
+```
+/components
+  Calendar.vue
+  ContactForm.vue
+  InstructorList.vue
+
+/pages
+  index.vue
+  contact.vue
+  courses.vue
+
+/assets
+  /images
+  /styles
+
+/locales
+  en.json
+  ru.json
+
+/README.md (this file)
+```
+
+---
+
+## How to Run the Project
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/victoria-auto-school.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+4. Visit the app at `http://localhost:3000`.
+
+---
+
+## License
+
+MIT License
 
