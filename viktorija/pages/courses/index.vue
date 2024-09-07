@@ -52,6 +52,8 @@
           </div>
         </div>
       </section>
+
+      <InstructorsSection />
     </main>
 
     <footer>

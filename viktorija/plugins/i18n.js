@@ -127,6 +127,11 @@ export default defineNuxtPlugin((nuxtApp) => {
           darkMode: 'Темный режим',
           lightMode: 'Светлый режим',
 
+
+          
+          
+          
+
         offers: {
           title: 'Акции и скидки',
           register: 'Записаться на курс',
