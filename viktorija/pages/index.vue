@@ -6,7 +6,10 @@
       <nav>
         <nuxt-link :to="'/register'" class="button">{{ $t('register') }}</nuxt-link>
         <nuxt-link :to="'/contact'" class="button">{{ $t('contact') }}</nuxt-link>
-        <SiteMapAccordion />
+
+        <!-- Site map accordion -->
+        <!-- <SiteMapAccordion /> -->
+
       </nav>
       
     </header>
@@ -26,7 +29,8 @@
         <ReviewList />
       </div>
 
-      <ContactForm />
+      <!-- Contact Form -->
+      <!-- <ContactForm /> -->
 
     </main>
     <footer>
